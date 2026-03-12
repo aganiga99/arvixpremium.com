@@ -114,7 +114,7 @@ export default function ProductDetailPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                         {/* Images */}
                         <div>
-                            <div className="bg-neutral-100 overflow-hidden flex items-center justify-center" style={{ maxHeight: '70vh', minHeight: '350px' }}>
+                            <div className="bg-white overflow-hidden flex items-center justify-center" style={{ maxHeight: '70vh', minHeight: '350px' }}>
                                 {mainImage ? (
                                     // eslint-disable-next-line @next/next/no-img-element
                                     <img src={mainImage} alt={product.name} className="w-full h-full object-contain" />

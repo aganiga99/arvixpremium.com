@@ -29,6 +29,7 @@ export default function CategoryPage() {
     const slug = params.category as string;
     const [data, setData] = useState<CategoryData | null>(null);
     const [loading, setLoading] = useState(true);
+    const [subImages, setSubImages] = useState<Record<string, string>>({});
 
     useEffect(() => {
         if (!slug) { setLoading(false); return; }
@@ -38,6 +39,31 @@ export default function CategoryPage() {
             .catch(() => setData(null))
             .finally(() => setLoading(false));
     }, [slug]);
+
+    // Fetch first product image for subcategories without their own image
+    useEffect(() => {
+        if (!data?.children) return;
+        const noImageSubs = data.children.filter(c => c.active && !c.image);
+        if (noImageSubs.length === 0) return;
+
+        const fetchImages = async () => {
+            const imgs: Record<string, string> = {};
+            await Promise.all(
+                noImageSubs.map(async (sub) => {
+                    try {
+                        const res = await fetch(`/api/db/products?categorySlug=${sub.slug}&limit=1`, { cache: 'no-store' });
+                        const products = await res.json();
+                        if (Array.isArray(products) && products.length > 0) {
+                            const firstImage = products[0]?.images?.[0]?.url;
+                            if (firstImage) imgs[sub.id] = firstImage;
+                        }
+                    } catch { /* skip */ }
+                })
+            );
+            if (Object.keys(imgs).length > 0) setSubImages(imgs);
+        };
+        fetchImages();
+    }, [data]);
 
     if (loading) {
         return (
@@ -85,9 +111,9 @@ export default function CategoryPage() {
                             {activeChildren.map((sub) => (
                                 <Link key={sub.id} href={`/urunler/${slug}/${sub.slug}`} className="group border border-neutral-200 bg-white hover:shadow-lg transition-all duration-300">
                                     <div className="aspect-square bg-neutral-100 overflow-hidden relative">
-                                        {sub.image ? (
+                                        {(sub.image || subImages[sub.id]) ? (
                                             // eslint-disable-next-line @next/next/no-img-element
-                                            <img src={sub.image} alt={sub.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                            <img src={sub.image || subImages[sub.id]} alt={sub.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-100 to-neutral-200">
                                                 <span className="text-3xl font-black text-neutral-300 uppercase tracking-wider">{sub.name}</span>

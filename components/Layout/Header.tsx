@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useCart } from '@/context/CartContext';
 
-interface NavLink { name: string; href: string; active: boolean; }
+interface NavLink { name: string; href: string; active: boolean; color?: string; fontWeight?: string; }
+interface NavStyle { fontSize?: string; color?: string; fontWeight?: string; uppercase?: boolean; }
 interface SubCategory {
   id: string;
   name: string;
@@ -37,6 +38,7 @@ export default function Header() {
   ]);
   const [ctaText, setCtaText] = useState('Teklif Al');
   const [ctaLink, setCtaLink] = useState('/iletisim');
+  const [navStyle, setNavStyle] = useState<NavStyle>({});
 
   useEffect(() => {
     fetch('/api/db/settings?key=header', { cache: 'no-store' })
@@ -45,6 +47,7 @@ export default function Header() {
         if (data.navLinks) setNavLinks(data.navLinks);
         if (data.ctaText) setCtaText(data.ctaText);
         if (data.ctaLink) setCtaLink(data.ctaLink);
+        if (data.navStyle) setNavStyle(data.navStyle);
       })
       .catch(() => { });
   }, []);
@@ -84,7 +87,16 @@ export default function Header() {
 
           <div className="hidden lg:flex items-center gap-7">
             {activeNavLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-[12px] font-medium uppercase tracking-[2px] text-neutral-300 hover:text-white transition-colors">
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-[12px] font-medium tracking-[2px] text-neutral-300 hover:text-white transition-colors ${navStyle.uppercase !== false ? 'uppercase' : ''}`}
+                style={{
+                  ...(navStyle.fontSize ? { fontSize: navStyle.fontSize } : {}),
+                  ...(link.color || navStyle.color ? { color: link.color || navStyle.color } : {}),
+                  ...(link.fontWeight || navStyle.fontWeight ? { fontWeight: link.fontWeight || navStyle.fontWeight } : {}),
+                }}
+              >
                 {link.name}
               </Link>
             ))}
@@ -220,7 +232,16 @@ export default function Header() {
         <div className="lg:hidden bg-black border-t border-neutral-800 max-h-[85vh] overflow-y-auto">
           <div className="px-6 pt-5 pb-3 space-y-1">
             {activeNavLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="block text-[13px] font-medium uppercase tracking-[2px] py-2.5 text-neutral-300 hover:text-white transition-colors" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block text-[13px] font-medium tracking-[2px] py-2.5 text-neutral-300 hover:text-white transition-colors ${navStyle.uppercase !== false ? 'uppercase' : ''}`}
+                style={{
+                  ...(link.color || navStyle.color ? { color: link.color || navStyle.color } : {}),
+                  ...(link.fontWeight || navStyle.fontWeight ? { fontWeight: link.fontWeight || navStyle.fontWeight } : {}),
+                }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {link.name}
               </Link>
             ))}
