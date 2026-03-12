@@ -136,7 +136,7 @@ export default function Header() {
               >
                 <Link
                   href={`/urunler/${cat.slug}`}
-                  className={`relative flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-[1.5px] px-5 py-3.5 transition-colors ${activeCategory === cat.slug ? 'text-white' : 'text-neutral-400 hover:text-white'
+                  className={`relative flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[1px] whitespace-nowrap px-3.5 py-3.5 transition-colors ${activeCategory === cat.slug ? 'text-white' : 'text-neutral-400 hover:text-white'
                     }`}
                 >
                   {i > 0 && <span className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-3.5 bg-neutral-700" />}
