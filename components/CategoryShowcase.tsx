@@ -34,7 +34,7 @@ export default function CategoryShowcase() {
         <section className="py-20 md:py-28 bg-white">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-14">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Ürün Kategorileri</h2>
+                    <h2 className="text-4xl md:text-6xl font-bold mb-4">Ürün Kategorileri</h2>
                     <p className="text-neutral-500 text-base md:text-lg">
                         Profesyonel fitness ekipmanlarımızı keşfedin
                     </p>
@@ -66,7 +66,7 @@ export default function CategoryShowcase() {
                             {/* Category Name */}
                             <div className="absolute inset-0 flex items-end p-5">
                                 <div>
-                                    <h3 className="text-white text-sm md:text-base font-bold uppercase tracking-wider">
+                                    <h3 className="text-white text-base md:text-lg font-bold uppercase tracking-wider">
                                         {cat.name}
                                     </h3>
                                     <div className="mt-2 w-0 group-hover:w-8 h-0.5 bg-white transition-all duration-300" />

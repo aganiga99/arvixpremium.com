@@ -28,8 +28,8 @@ export default function Testimonials() {
         <section className="py-20 md:py-28 bg-neutral-950 text-white">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-14">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Müşterilerimiz Ne Diyor?</h2>
-                    <p className="text-neutral-400 text-base md:text-lg">
+                    <h2 className="text-4xl md:text-6xl font-bold mb-4">Müşterilerimiz Ne Diyor?</h2>
+                    <p className="text-neutral-400 text-lg md:text-xl">
                         İş ortaklarımızdan gelen değerlendirmeler
                     </p>
                 </div>

@@ -114,12 +114,12 @@ export default function ProductDetailPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                         {/* Images */}
                         <div>
-                            <div className="aspect-square bg-neutral-100 overflow-hidden">
+                            <div className="bg-neutral-100 overflow-hidden flex items-center justify-center" style={{ maxHeight: '70vh', minHeight: '350px' }}>
                                 {mainImage ? (
                                     // eslint-disable-next-line @next/next/no-img-element
-                                    <img src={mainImage} alt={product.name} className="w-full h-full object-cover" />
+                                    <img src={mainImage} alt={product.name} className="w-full h-full object-contain" />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-neutral-300">
+                                    <div className="w-full flex items-center justify-center text-neutral-300" style={{ minHeight: '350px' }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5"><rect width="18" height="18" x="3" y="3" rx="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg>
                                     </div>
                                 )}
@@ -131,7 +131,7 @@ export default function ProductDetailPage() {
                                         <button
                                             key={img.id}
                                             onClick={() => setActiveImage(i)}
-                                            className={`w-16 h-16 border-2 overflow-hidden transition-colors ${activeImage === i ? 'border-black' : 'border-neutral-200 hover:border-neutral-400'}`}
+                                            className={`w-20 h-20 border-2 overflow-hidden transition-colors ${activeImage === i ? 'border-black' : 'border-neutral-200 hover:border-neutral-400'}`}
                                         >
                                             {/* eslint-disable-next-line @next/next/no-img-element */}
                                             <img src={img.url} alt={img.alt || ''} className="w-full h-full object-cover" />

@@ -34,7 +34,7 @@ export default function BlogSection() {
         <section className="py-20 md:py-28 bg-white">
             <div className="max-w-6xl mx-auto px-6">
                 <div className="text-center mb-14">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">Blog</h2>
+                    <h2 className="text-4xl md:text-6xl font-bold mb-4">Blog</h2>
                     <p className="text-neutral-500 text-base md:text-lg">
                         Fitness dünyasından haberler ve rehberler
                     </p>
@@ -74,7 +74,7 @@ export default function BlogSection() {
                             <p className="text-xs text-neutral-400 mb-2 uppercase tracking-wider">
                                 {formatDate(post.createdAt)}
                             </p>
-                            <h3 className="text-lg font-bold mb-2 group-hover:text-neutral-600 transition-colors">
+                            <h3 className="text-xl font-bold mb-2 group-hover:text-neutral-600 transition-colors">
                                 {post.title}
                             </h3>
                             <p className="text-sm text-neutral-500 leading-relaxed">

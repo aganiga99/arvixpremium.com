@@ -76,7 +76,7 @@ export default function HomePage() {
       {/* About Section */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-10">{data.about.title}</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-10">{data.about.title}</h2>
           <div className="text-left space-y-6 text-base md:text-lg text-neutral-600 leading-relaxed">
             {data.about.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
@@ -96,7 +96,7 @@ export default function HomePage() {
       {/* Custom Branding */}
       <section className="py-20 md:py-28 bg-neutral-50">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">{data.branding.title}</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">{data.branding.title}</h2>
           <p className="text-base md:text-lg text-neutral-600 mb-10 max-w-3xl mx-auto">{data.branding.subtitle}</p>
           <Link
             href={data.branding.buttonLink}
@@ -110,12 +110,12 @@ export default function HomePage() {
       {/* Why Choose Us */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-bold mb-14 text-center">{data.whyUs.title}</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-14 text-center">{data.whyUs.title}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {data.whyUs.items.map((item, i) => (
               <div key={i} className="text-center">
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
+                <p className="text-neutral-600 text-base leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -131,7 +131,7 @@ export default function HomePage() {
       {/* Final CTA */}
       <section className="py-20 bg-black text-white text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-2xl md:text-4xl font-bold mb-6">{data.cta.title}</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">{data.cta.title}</h2>
           <p className="text-neutral-400 mb-10">{data.cta.subtitle}</p>
           <Link
             href={data.cta.buttonLink}

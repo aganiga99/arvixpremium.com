@@ -29,10 +29,10 @@ export default function Header() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [navLinks, setNavLinks] = useState<NavLink[]>([
     { name: 'Biz Kimiz', href: '/hakkimizda', active: true },
-    { name: 'Marka & Logo', href: '/marka-logo', active: true },
-    { name: 'Mimari Planlama', href: '/mimari-planlama', active: true },
-    { name: 'Blog', href: '/blog', active: true },
+    { name: 'Marka Logonu Yarat', href: '/marka-logo', active: true },
+    { name: '3D Mimari Planlama', href: '/mimari-planlama', active: true },
     { name: 'SSS', href: '/sss', active: true },
+    { name: 'Blog', href: '/blog', active: true },
     { name: 'İletişim', href: '/iletisim', active: true },
   ]);
   const [ctaText, setCtaText] = useState('Teklif Al');

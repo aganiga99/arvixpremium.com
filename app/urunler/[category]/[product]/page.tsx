@@ -121,7 +121,7 @@ export default function SubcategoryPage() {
                                             )}
                                         </div>
                                         <div className="p-5">
-                                            <h3 className="text-base font-bold uppercase tracking-wider">{product.name}</h3>
+                                            <h3 className="text-lg font-bold uppercase tracking-wider">{product.name}</h3>
                                             {product.oldName && (
                                                 <p className="text-xs text-neutral-400 mt-1">Eski: {product.oldName}</p>
                                             )}
